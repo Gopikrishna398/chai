@@ -1,22 +1,27 @@
 pipeline {
     agent any
 
+    environment {
+        PORT = "3000"
+    }
+
     stages {
+
         stage('Clone') {
             steps {
-                echo 'Cloning repository...'
+                echo "Cloning repository..."
             }
         }
 
-        stage('Install') {
+        stage('Install Dependencies') {
             steps {
                 bat 'npm install'
             }
         }
 
-        stage('Build') {
+        stage('Run Application') {
             steps {
-                bat 'npm run build'
+                bat 'set PORT=3000 && node app.js'
             }
         }
     }
