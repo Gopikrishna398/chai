@@ -21,7 +21,7 @@ pipeline {
 
         stage('Run Application') {
             steps {
-                bat 'set PORT=3000 && node app.js'
+                bat 'set PORT=3000 && node index.js'
             }
         }
     }
